@@ -12,6 +12,8 @@ CYAN="\033[1;36m"    # Bright cyan for headers and info
 YELLOW="\033[1;33m"  # Bright yellow for warnings and actions
 RED="\033[1;31m"     # Bright red for errors and critical warnings
 BOLD="\033[1m"       # Bold text style
+BLACK="\033[0;30m"   # Black text (may not be visible on dark backgrounds)
+
 NC="\033[0m"         # Reset all attributes (No Color)
 
 # ──────────────────────────────────────────────────────────────
@@ -21,6 +23,12 @@ NC="\033[0m"         # Reset all attributes (No Color)
 #   $1 - PID of the background process to monitor.
 # The spinner cycles through characters while the process is active,
 # and displays a checkmark when done.
+
+
+
+
+
+
 spinner() {
     local pid=$1
     local delay=0.1
@@ -50,6 +58,8 @@ echo "   LinkedIn: https://www.linkedin.com/in/kmailmo"
 echo "───────────────────────────────────────────────"
 echo -e "${NC}"
 
+
+
 diskutil list | grep 'external' | awk '
 BEGIN {
     red = "\033[31m"
@@ -60,6 +70,25 @@ BEGIN {
     reset = "\033[0m"
 }
 {print green $1 reset, $2, red $3 reset, $4, $5, $6}'
+
+
+
+draw_palestine_flag() {
+    echo ""
+    echo -e "    $RED*$BLACK*******************************$NC"
+    echo -e "    $RED***$BLACK*****************************$NC"
+    echo -e "    $RED*****$BLACK***************************$NC"
+    echo -e "    $RED*******$NC*************************$NC"
+    echo -e "    $RED*********$NC***********************$NC"
+    echo -e "    $RED*******$NC*************************$NC"
+    echo -e "    $RED*****$GREEN***************************$NC"
+    echo -e "    $RED***$GREEN*****************************$NC"
+    echo -e "    $RED*$GREEN*******************************$NC"
+    echo ""
+}
+
+draw_palestine_flag
+
 
 
 # Ask for details
@@ -115,4 +144,5 @@ echo -e "${CYAN}─────────────────────�
 echo -e "${YELLOW}✨ All operations completed safely. ✨${NC}"
 echo -e "${CYAN}───────────────────────────────────────────────${NC}"
 echo ""
+draw_palestine_flag
 echo -e "${CYAN} free free Palestine 🇵🇸 ${NC}"
