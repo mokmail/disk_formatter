@@ -1,4 +1,4 @@
-# How To Use: Disk Partition Wizard by Mohammed
+# How To Use: Disk Partition Wizard by Kmail
 
 This guide explains how to safely use the interactive, animated Bash script for formatting and partitioning disks on macOS.
 
@@ -85,3 +85,4 @@ Press Enter to confirm you want to proceed... [Y/N] Y
 
 - **Double-check** the disk identifier to avoid data loss.
 - For support, contact [mokmail on GitHub](https://github.com/mokmail) or [LinkedIn](https://www.linkedin.com/in/kmailmo).
+
