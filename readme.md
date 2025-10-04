@@ -52,7 +52,7 @@ This guide explains how to safely use the interactive, animated Bash script for 
 $ sudo ./disk-wizard.sh
 
 ───────────────────────────────────────────────
-    ✨ Disk Partition Wizard by Mohammed ✨
+    ✨ Disk Partition Wizard by Mohammed Kmail ✨
     If you have any issues, contact me on:
     GitHub: https://github.com/mokmail
     LinkedIn: https://www.linkedin.com/in/kmailmo
@@ -85,4 +85,5 @@ Press Enter to confirm you want to proceed... [Y/N] Y
 
 - **Double-check** the disk identifier to avoid data loss.
 - For support, contact [mokmail on GitHub](https://github.com/mokmail) or [LinkedIn](https://www.linkedin.com/in/kmailmo).
+
 
