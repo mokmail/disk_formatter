@@ -50,10 +50,6 @@ echo "   LinkedIn: https://www.linkedin.com/in/kmailmo"
 echo "───────────────────────────────────────────────"
 echo -e "${NC}"
 
-# ──────────────────────────────────────────────────────────────
-# List all external disks connected to the Mac.
-# Uses 'diskutil list' to show disks, filters for 'external' entries,
-# and colorizes the output for better readability.
 diskutil list | grep 'external' | awk '
 BEGIN {
     red = "\033[31m"
@@ -65,59 +61,51 @@ BEGIN {
 }
 {print green $1 reset, $2, red $3 reset, $4, $5, $6}'
 
-# ──────────────────────────────────────────────────────────────
-# Prompt the user to enter the desired name for the new volume.
-# Also, prompt for the disk identifier (e.g., disk2) to select the target disk.
+
+# Ask for details
 read -p "Enter the name of the new volume: " volume_name
 read -p "Enter the disk identifier (e.g. disk2): " disk_identifier
 echo ""
 
-# ──────────────────────────────────────────────────────────────
-# 🚨 SAFETY WARNING SECTION
-# Display a prominent warning about data loss.
-# The user is informed that all data on the selected disk will be erased.
-# The script pauses to allow the user to cancel with Ctrl+C if unsure.
+# ──────────────────────────────────────────────
+# 🚨 SAFETY WARNING
+# ──────────────────────────────────────────────
 echo -e "${RED}${BOLD}⚠️  WARNING: You are about to ERASE ALL DATA on /dev/${disk_identifier}!${NC}"
 echo -e "${YELLOW}This operation will permanently delete all partitions and files on the selected disk.${NC}"
 echo ""
 echo -e "${CYAN}If you are not absolutely sure, press Ctrl+C now to cancel.${NC}"
 echo ""
 
-# ──────────────────────────────────────────────────────────────
-# Ask for final confirmation before proceeding with destructive actions.
-# The user must explicitly confirm by pressing Enter and typing Y/y.
+# Countdown to give time to cancel
+
 read -p "Press Enter to confirm you want to proceed... [Y/N]" confirm 
 
-# If the user does not confirm with Y/y, abort the operation for safety.
 if [[ "$confirm" != "Y" && "$confirm" != "y" ]]; then
     echo -e "${RED}Operation cancelled by user.${NC}"
     exit 1
 fi
 
-# Inform the user that the script will now proceed with formatting.
 echo -e "${GREEN}Proceeding with disk formatting...${NC}"
 echo ""
 
-# ──────────────────────────────────────────────────────────────
-# Disk Operations Section
-# Step 1: Zero out the first 1MB of the selected disk.
-# This removes partition information and ensures a clean slate.
-# The operation is performed in the background, and the spinner shows progress.
+# ──────────────────────────────────────────────
+# Disk Operations
+# ──────────────────────────────────────────────
+
+
 echo -e "${YELLOW}⚙️  Zeroing out first 1MB of /dev/${disk_identifier} ...${NC}"
+
 (dd if=/dev/zero of=/dev/${disk_identifier} bs=1024 count=1024 >/dev/null 2>&1) &
 spinner $!
 
-# Step 2: Create a new partition table and format the disk as JHFS+ (Mac OS Extended).
-# The diskutil command is run in the background, and the spinner indicates progress.
 echo ""
 echo -e "${YELLOW}⚙️  Creating new partition and formatting as JHFS+ ...${NC}"
 (diskutil partitionDisk /dev/${disk_identifier} GPT JHFS+ "$volume_name" 0g >/dev/null 2>&1) &
 spinner $!
 
-# ──────────────────────────────────────────────────────────────
-# Completion Message Section
-# Print a summary of the successful operation, including the new volume name and disk identifier.
-# Decorative lines and emojis are used for a friendly user experience.
+# ──────────────────────────────────────────────
+# Completion Message
+# ──────────────────────────────────────────────
 echo ""
 echo -e "${GREEN}🎉 Success!${NC}"
 echo -e "${GREEN}💾 New volume: ${CYAN}${volume_name}${NC}"
@@ -127,3 +115,5 @@ echo -e "${CYAN}─────────────────────�
 echo -e "${YELLOW}✨ All operations completed safely. ✨${NC}"
 echo -e "${CYAN}───────────────────────────────────────────────${NC}"
 echo ""
+
+
