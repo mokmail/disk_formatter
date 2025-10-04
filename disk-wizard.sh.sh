@@ -51,7 +51,7 @@ spinner() {
 clear
 echo -e "${CYAN}"
 echo "───────────────────────────────────────────────"
-echo "   ✨ Disk Partition Wizard by Mohammed ✨"
+echo "   ✨ Disk Partition Wizard by Mohammed Kmail✨"
 echo "   If you have any issues, contact me on:"
 echo "   GitHub: https://github.com/mokmail"
 echo "   LinkedIn: https://www.linkedin.com/in/kmailmo"

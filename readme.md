@@ -49,34 +49,64 @@ This guide explains how to safely use the interactive, animated Bash script for 
 ## Example Session
 
 ```shell
-$ sudo ./disk-wizard.sh
-
 ───────────────────────────────────────────────
-    ✨ Disk Partition Wizard by Mohammed Kmail ✨
-    If you have any issues, contact me on:
-    GitHub: https://github.com/mokmail
-    LinkedIn: https://www.linkedin.com/in/kmailmo
+   ✨ Disk Partition Wizard by Mohammed ✨
+   If you have any issues, contact me on:
+   GitHub: https://github.com/mokmail
+   LinkedIn: https://www.linkedin.com/in/kmailmo
 ───────────────────────────────────────────────
 
-Enter the name of the new volume: MyDrive
-Enter the disk identifier (e.g. disk2): disk2
+/dev/disk5 (external, physical):   
 
-⚠️  WARNING: You are about to ERASE ALL DATA on /dev/disk2!
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+
+Enter the name of the new volume: Palestine
+Enter the disk identifier (e.g. disk2): disk5 
+
+⚠️  WARNING: You are about to ERASE ALL DATA on /dev/disk5!
 This operation will permanently delete all partitions and files on the selected disk.
 
 If you are not absolutely sure, press Ctrl+C now to cancel.
 
-Press Enter to confirm you want to proceed... [Y/N] Y
+Press Enter to confirm you want to proceed... [Y/N]y
+Proceeding with disk formatting...
 
-⚙️  Zeroing out first 1MB of /dev/disk2 ...
-[✔] Done!
+⚙️  Zeroing out first 1MB of /dev/disk5 ...
+[✔] Done!ng...
+
 ⚙️  Creating new partition and formatting as JHFS+ ...
-[✔] Done!
+[✔] Done!ng...
+./disk-wizard.sh.sh: line 134: r: command not found
 
 🎉 Success!
-💾 New volume: MyDrive
-🔖 Disk identifier: disk2
+💾 New volume: Palestine
+🔖 Disk identifier: disk5
+
+───────────────────────────────────────────────
 ✨ All operations completed safely. ✨
+───────────────────────────────────────────────
+
+
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+    ********************************
+
+ free free Palestine 🇵🇸 
+
 ```
 
 ---
